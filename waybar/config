@@ -1,0 +1,152 @@
+{
+  "layer": "top",
+  "height": 60,
+  "spacing": 4,
+  "modules-left": ["custom/arch", "hyprland/workspaces", "custom/media"],
+  "modules-center": ["clock", "custom/date"],
+  "modules-right": [
+    "bluetooth",
+    "power-profiles-daemon", 
+    "pulseaudio",
+    "network",
+    "battery",
+    "hyprland/language",
+    "custom/notification",
+    "custom/power"
+  ],
+  "hyprland/window": {
+    "separate-outputs": false
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "I",
+      "2": "II", 
+      "3": "III",
+      "4": "IV",
+      "5": "V",
+      "6": "VI",
+      "7": "VII",
+      "8": "VIII",
+      "9": "IX",
+      "10": "X",
+      "urgent": "!",
+      "focused": "▶",
+      "default": "·"
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },
+    "all-outputs": true,
+    "sort-by-number": true
+  },
+  "clock": {
+    "format": " {:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y}",
+    "interval": 1
+  },
+  "custom/date": {
+    "format": "| {}",
+    "exec": "date +'%a %d.%m.%y'",
+    "interval": 30
+  },
+  "keyboard-layout": {
+    "format": "⌨ {}",
+    "interval": 1,
+    "exec": "hyprctl devices -j | jq -r '.keyboards[0].active_keymap' | cut -c1-2",
+    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+  },
+  "hyprland/language": {
+    "format": "⌨ {}",
+    "format-en": "EN",
+    "format-uk": "UA",
+    "keyboard-name": "at-translated-set-2-keyboard"
+  }, 
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%",
+    "tooltip-format": "{capacity}% remaining"
+  },
+  "network": {
+        "format-wifi" : "{icon}  {essid}",
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+        "format-ethernet": "󰀂   {ifname}",
+    "format-alt" : "󱛇",
+        "format-disconnected" : "󰖪",
+    "tooltip-format-wifi": "⇣  {bandwidthDownBytes}  ⇡  {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "⇣  {bandwidthDownBytes}  ⇡  {bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 5,
+    "nospacing": 1,
+    },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "tooltip-format": "{desc} ({volume}%)",
+    "on-click": "pamixer -t"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "format-icons": {
+      "power-saver": "󰾆",
+      "balanced": "󰾅",
+      "performance": "󰓅"
+    },
+    "tooltip-format": "Power: {profile}"
+  },
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "tooltip-format": "{controller_alias}\n{device_enumerate}",
+    "on-click": "blueman-manager"
+  },
+  "custom/arch": {
+    "format": "󰣇",
+    "tooltip": false,
+    "on-click": "wofi --show drun"
+  },
+  "custom/media": {
+  "exec": "playerctl -p spotify,firefox,chromium metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"status\": \"{{status}}\"}'",
+  "interval": 1,
+  "format": "    <span>{text}</span>",
+  "return-type": "json",
+  "max-length": 40,
+  "on-click": "playerctl play-pause",
+  "on-click-middle": "playerctl stop",
+  "on-click-right": "playerctl next",
+  "on-scroll-up": "playerctl next",
+  "on-scroll-down": "playerctl previous",
+  "tooltip": true,
+  "escape": true,
+  "ellipsis": true
+},
+  "custom/notification": {
+  "tooltip": false,
+  "format": "{icon}",
+  "format-icons": {
+    "default": "󰂚",
+    "new": "󱅫"
+  },
+  "exec": "echo '{\"text\":\"\",\"tooltip\":\"\"}'",
+},
+  "custom/power": {
+    "tooltip": false,
+    "format": "󰐥",
+    "on-click": "wlogout"
+  }
+}

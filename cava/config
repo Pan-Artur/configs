@@ -1,0 +1,12 @@
+[general]
+bars = 12  # Зменшіть кількість стовпчиків
+framerate = 30  # Знизьте частоту оновлення
+
+[input]
+method = pulse
+
+[output]
+method = raw
+raw_target = /dev/stdout
+data_format = ascii  # Важливо!
+ascii_design = ▁▂▃▄▅▆▇█  # Символи для графіка
