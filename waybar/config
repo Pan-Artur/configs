@@ -48,11 +48,13 @@
   "clock": {
     "format": " {:%H:%M}",
     "tooltip-format": "{:%A, %d %B %Y}",
+    "tooltip": false,
     "interval": 1
   },
   "custom/date": {
-    "format": "| {}",
+    "format": "|  {}",
     "exec": "date +'%a %d.%m.%y'",
+    "tooltip": false,
     "interval": 30
   },
   "keyboard-layout": {
@@ -112,7 +114,7 @@
     "format": "󰂯",
     "format-disabled": "󰂲",
     "format-connected": "󰂱",
-    "tooltip-format": "{controller_alias}\n{device_enumerate}",
+    "tooltip-format": "{controller_alias}",
     "on-click": "blueman-manager"
   },
   "custom/arch": {

@@ -1,12 +1,12 @@
 [general]
-bars = 12  # Зменшіть кількість стовпчиків
-framerate = 30  # Знизьте частоту оновлення
+method = pulse
+bars = 0
+framerate = 60
+autosens = 1
 
 [input]
-method = pulse
+source = auto
 
 [output]
-method = raw
-raw_target = /dev/stdout
-data_format = ascii  # Важливо!
-ascii_design = ▁▂▃▄▅▆▇█  # Символи для графіка
+method = ncurses
+channels = mono
